@@ -10,40 +10,34 @@ tags: [ir, omg, ha, esp32, tv, remote, automation]
 In this post, I'll describe the steps to control a 55" TCL TV from Home Assistant. The initial goal was to simply turn it on and off as I'm using an Nvidia Shield as the primary interface.
 I decided to control it via a smart plug (for power) and **infrared** for specific commands, effectively emulating the remote control.
 
-# Table of contents
-
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-
-# Prerequisites
+## Prerequisites
 
 Those prerequisites contains a list of tools (hard, firm and software) that I decided to go with. You can for example switch the ESP32 controller for an ESP8266 (a Wemos D1 mini).
 This ESP32-S3 is overkill (the USB-C interface though 😍) for this task but that's what I had on hand.
 
-## Hardware
+### Hardware
 
 - [Wemos S3 mini ESP32 controller](https://www.wemos.cc/en/latest/s3/s3_mini.html)
 - [Wemos IR controller shield for D1 mini](https://www.wemos.cc/en/latest/d1_mini_shield/ir.html)
 
-## Software
+### Software
 
-### Server apps
+#### Server apps
 
 All apps are deployed via Docker. You can use any MQTT broker but I chose Mosquitto for its support.
 
 - [Mosquitto MQTT Broker/Server](https://mosquitto.org)
 - [Home Assistant](https://www.home-assistant.io)
 
-### Desktop apps
+#### Desktop apps
 
 - [MQTT Explorer](http://mqtt-explorer.com)
 
-## Firmware
+### Firmware
 
 - [OpenMQTTGateway](https://docs.openmqttgateway.com)
 
-# Installation
+## Installation
 
 For the ESP32 firmware, I decided to go with OpenMQTTGateway (OMG) for its already built-in IR controller integration.
 As of writing this post, the current version is 1.6.0 which does not support the S3-based boards out-of-the-box (I had to use the latest platform).
@@ -94,7 +88,7 @@ Some settings might not work for you since they are board-specific or dependant 
 
 Once Platform.io / OMG is configured, you can build your firmware and upload it to the board.
 
-# Usage
+## Usage
 
 Once your firmware is installed, you can reset your board and let it boot up.
 In MQTT (via "MQTT Explorer" listed above), if everything is setup correctly, you should see two new topics:
@@ -121,9 +115,9 @@ In a nutshell, when the shield receives an IR frame, it is converted to JSON and
 
 You can use the `protocol_name` and `value` in your commands to send the correct IR frame, emulating your button press.
 
-## IR Examples
+### IR Examples
 
-### Turn TV ON/OFF
+#### Turn TV ON/OFF
 
 I can emulate a press on the power button via sending a message on the broker.
 
@@ -133,7 +127,7 @@ I can emulate a press on the power button via sending a message on the broker.
 { "value": 876330, "protocol_name": "NIKAI" }
 ```
 
-### Changing input (Button +)
+#### Changing input (Button +)
 
 **MQTT topic**: `<BASE_TOPIC>/<GATEWAY_NAME>/commands/MQTTtoIR`
 
@@ -141,7 +135,7 @@ I can emulate a press on the power button via sending a message on the broker.
 { "value": 864045, "protocol_name": "NIKAI" }
 ```
 
-### Changing input (Button -)
+#### Changing input (Button -)
 
 ```json
 { "value": 868140, "protocol_name": "NIKAI" }
@@ -149,7 +143,7 @@ I can emulate a press on the power button via sending a message on the broker.
 
 **MQTT topic**: `<BASE_TOPIC>/<GATEWAY_NAME>/commands/MQTTtoIR`
 
-## Home Assistant
+### Home Assistant
 
 In Home Assistant (HA), we can use automation to publish a message on those specific topics seen above.
 
