@@ -29,7 +29,7 @@ All apps are deployed via Docker. You can use any MQTT broker but I chose Mosqui
 
 #### Desktop apps
 
-- [MQTT Explorer](http://mqtt-explorer.com)
+- [MQTT Explorer](https://mqtt-explorer.com)
 
 ### Firmware
 
