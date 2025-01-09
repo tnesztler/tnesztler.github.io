@@ -1,6 +1,6 @@
 ---
 title: Stream from VLC using Google Cast (Chromecast) with pfSense across VLANs
-date: 2025-08-01 22:05:00 +01:00
+date: 2025-01-08 22:05:00 +01:00
 categories: [pfsense]
 tags: [chromecast, googlecast, vlc, vlan, avahi, pfsense, rules, firewall]
 ---

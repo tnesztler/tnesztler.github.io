@@ -1,8 +1,8 @@
 ---
 title: Infrared TV Remote Automation with OpenMQTTGateway (OMG) and Home Assistant
 date: 2023-07-24 10:09:00 +02:00
-categories: [openmqttgateway, esp32, home-assistant]
-tags: [ir, omg, ha, esp32, tv, remote, automation]
+categories: [home-assistant]
+tags: [ir, omg, openmqttgateway, ha, esp32, tv, remote, automation]
 ---
 
 In this post, I'll describe the steps to control a 55" TCL TV from Home Assistant. The initial goal was to simply turn it on and off as I'm using an Nvidia Shield as the primary interface.
