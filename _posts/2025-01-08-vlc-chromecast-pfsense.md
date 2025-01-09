@@ -34,14 +34,16 @@ Under `Firewall > Rules`,
 2. From the **receiving** device, you must allow **TCP/8010** traffic (the VLC [HTTP port](https://github.com/videolan/vlc/blob/master/modules/stream_out/chromecast/chromecast.h#L63)) to the **sending** device as VLC acts as web server that can stream video. I personally simplified the rule with a destination being an entire network and not just a device, since I want to stream from my phone or computer easily (both on the same network).
 
 On the **sending** interface (eg. a wireless network):
-|Protocol|Source|Port|Destination|Port|
-|:-:|:-:|:-:|:-:|:-:|
-|IPv4|WIRELESS subnets|\*|TV address|8009|
+
+| Protocol |      Source      | Port | Destination | Port |
+| :------: | :--------------: | :--: | :---------: | :--: |
+|   IPv4   | WIRELESS subnets |  \*  | TV address  | 8009 |
 
 On the **receiving** interface (eg. an IoT network):
-|Protocol|Source|Port|Destination|Port|
-|:-:|:-:|:-:|:-:|:-:|
-|IPv4|TV address|\*|WIRELESS subnets|8010|
+
+| Protocol |   Source   | Port |   Destination    | Port |
+| :------: | :--------: | :--: | :--------------: | :--: |
+|   IPv4   | TV address |  \*  | WIRELESS subnets | 8010 |
 
 Note: The TCP/8010 HTTP port is the one used by default by VLC and can be changed in the settings.
 
