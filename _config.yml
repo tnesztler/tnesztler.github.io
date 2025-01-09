@@ -15,6 +15,9 @@ lang: en
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Europe/Paris
 
+# Disable future posts (with date > now())
+future: false
+
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
@@ -35,7 +38,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Thibaud Nesztler
-  # email: 
+  # email:
   links:
     # The first element serves as the copyright owner's link
     - https://github.com/tnesztler # change to your github homepage
