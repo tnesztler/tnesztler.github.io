@@ -12,3 +12,8 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
+
+# Added for compatibility with Ruby 3.7
+gem "base64", "~> 0.2.0"
+gem "csv", "~> 3.3"
+gem "logger", "~> 1.6"
